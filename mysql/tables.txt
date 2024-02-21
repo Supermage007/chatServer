@@ -1,0 +1,29 @@
+CREATE TABLE User (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL  UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    state ENUM('online', 'offline') DEFAULT 'offline'
+);
+create table Friend (
+    userid int not null,
+    friendid int not null,
+    primary key (userid, friendid)
+);
+
+create table AllGroup (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    groupname varchar(50) NOT NULL UNIQUE,
+    groupdesc  varchar(200) default '' 
+);
+
+create table GroupUser (
+    groupid int not null,
+    userid int not null,
+    grouprole enum('creator', 'normal') default 'normal',
+    primary key (groupid, userid)
+);
+
+create table OfflineMessage (
+    userid int not null,
+    message varchar(500) not null
+);
